@@ -18,6 +18,13 @@ then
 	fi
 else
     echo " $pkg Package  is  installed!"
+    echo " do you want install any other packaes (y/n)?"
+    read o
+    if [ $o == 'y' ]
+    then
+	    install
+    fi
 fi
 }
 install
+echo Job Done TQ !!@@
