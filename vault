@@ -1,0 +1,14 @@
+#!/bin/bash
+
+        if [[ ! -a ./.vault.password ]]
+        then
+                echo "Sorry, you need a password for the vault. Try again."
+        else
+                if [[ -a ./vars/$1 ]]
+                then
+                        ansible-vault edit ./vars/$1 --vault-password-file .vault.password
+                else
+                        ansible-vault create ./vars/$1  --vault-password-file .vault.password
+                fi
+        fi
+        echo "Updated $1. Please keep vault password safe!"

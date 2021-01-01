@@ -1,0 +1,14 @@
+#!/bin/bash
+# SOFTWARE.
+# Usage:
+#   play <name-of-node-or-project>
+#
+if [[ -z $1 ]]; then
+  echo "Usage: play <playbook>"
+else
+  if [[ -a ./.vault.password ]]; then
+    ansible-playbook -i ./inventory.ini $1 --vault-password-file ./.vault.password
+  else
+    ansible-playbook -i ./inventory.ini $1
+  fi
+fi
